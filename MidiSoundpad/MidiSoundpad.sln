@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidiSoundpad", "MidiSoundpad\MidiSoundpad.csproj", "{48C6771F-B55A-4E69-903E-224262D9DFE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48C6771F-B55A-4E69-903E-224262D9DFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C6771F-B55A-4E69-903E-224262D9DFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C6771F-B55A-4E69-903E-224262D9DFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C6771F-B55A-4E69-903E-224262D9DFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {131DE2D9-58A4-4990-84B4-2BDCB2841A91}
+	EndGlobalSection
+EndGlobal
