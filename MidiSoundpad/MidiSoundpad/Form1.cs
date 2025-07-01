@@ -1,14 +1,18 @@
 ﻿using IniParser;
 using IniParser.Model;
+using Microsoft.Win32;
+using MidiSoundpad.Properties;
 using NAudio.CoreAudioApi;
 using NAudio.Midi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,10 +41,20 @@ namespace MidiSoundpad
         {
             InitializeComponent();
 
+            ConfigManager TEMPconfigManager = new ConfigManager();
+
+            if (Boolean.Parse(TEMPconfigManager.GetParamValue(TEMPconfigManager.settingsPath, "General", "AutorunTray")))
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+                notifyIcon1.Visible = true;
+            } else
+            {
+                notifyIcon1.Visible = false;
+            }
+
             ApplicationInit();
         }
-
-
         public void ApplicationInit()
         {
             LogManager.Instance.RegistrationCallback(LogWriter);
@@ -54,12 +68,27 @@ namespace MidiSoundpad
 
             isAppReady = true;
 
+            audioManager.SelectOutput(configManager.GetParamValue(configManager.settingsPath, "Audio", "SoundPadMonitoringOutput"));
+
+            //launchTray.Checked = Convert.ToBoolean(configManager.GetParamValue(configManager.settingsPath, "Audio", "Midi"));
+
             MidiControllerBox.Text = configManager.GetParamValue(configManager.settingsPath, "Audio", "Midi");
             MicrophoneBox.Text = configManager.GetParamValue(configManager.settingsPath, "Audio", "Input");
             VirtualCableBox.Text = configManager.GetParamValue(configManager.settingsPath, "Audio", "Output");
 
+            spMonitoringOutput.Text = configManager.GetParamValue(configManager.settingsPath, "Audio", "SoundPadMonitoringOutput");
+            spMonitoringMode.Checked = Boolean.Parse(configManager.GetParamValue(configManager.settingsPath, "Audio", "SoundPadMonitoringMode"));
+            monitoringVolumeFactor.Value = Int32.Parse(configManager.GetParamValue(configManager.settingsPath, "Audio", "SoundPadMonitoringVolumeFactor"));
+
             VirtualCableBox.Text = configManager.GetParamValue(configManager.settingsPath, "Audio", "Output");
             wasapiLatency.Value = Int32.Parse(configManager.GetParamValue(configManager.settingsPath, "Audio", "WasapiLatency"));
+
+
+
+            launchTray.Checked = Boolean.Parse(configManager.GetParamValue(configManager.settingsPath, "General", "AutorunTray"));
+            autorun.Checked = Boolean.Parse(configManager.GetParamValue(configManager.settingsPath, "General", "Autorun"));
+            trayMode.Checked = Boolean.Parse(configManager.GetParamValue(configManager.settingsPath, "General", "TrayMode"));
+
 
             LogManager.Instance.AddLog("MAIN", $"The program is successfully ready to work");
         }
@@ -131,6 +160,8 @@ namespace MidiSoundpad
             {
                 VirtualCableBox.Items.AddRange(outputs.ToArray());
                 VirtualCableBox.SelectedIndex = 0;
+
+                spMonitoringOutput.Items.AddRange(outputs.ToArray());
             }
             else
             {
@@ -182,11 +213,6 @@ namespace MidiSoundpad
             audioManager.Start();
 
             configManager.ChangeAndSaveParam(configManager.settingsPath, "Audio", "Output", selectedOutputName);
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -351,6 +377,10 @@ namespace MidiSoundpad
         {
             configManager.ChangeAndSaveParam(configManager.settingsPath, "Audio", "WasapiLatency", wasapiLatency.Value.ToString());
 
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "Audio", "SoundPadMonitoringMode", spMonitoringMode.Checked.ToString());
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "Audio", "SoundPadMonitoringOutput", spMonitoringOutput.SelectedItem.ToString());
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "Audio", "SoundPadMonitoringVolumeFactor", monitoringVolumeFactor.Value.ToString());
+
             var result = MessageBox.Show(
                 "To apply the new settings, you need to restart the program.\n\nRestart now?",
                 "A restart is required",
@@ -359,11 +389,109 @@ namespace MidiSoundpad
 
             if (result == DialogResult.Yes)
             {
-                // Перезапускаем приложение
                 Application.Restart();
 
-                // Завершаем текущую копию программы
                 Environment.Exit(0);
+            }
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/ShizzaHo/MIDISoundpad");
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://vb-audio.com/Cable/");
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.donationalerts.com/r/shizzaho");
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ShowWindow()
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            this.Activate();
+
+            notifyIcon1.Visible = false;
+        }
+
+        private void HideWindow()
+        {
+            this.ShowInTaskbar = false;
+            this.Hide();
+
+            notifyIcon1.Visible = true;
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if(Boolean.Parse(configManager.GetParamValue(configManager.settingsPath, "General", "TrayMode")))
+            {
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    e.Cancel = true;
+                    HideWindow();
+                }
+                else
+                {
+                    base.OnFormClosing(e);
+                }
+            }
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                ShowWindow();
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "General", "TrayMode", trayMode.Checked.ToString());
+        }
+
+        private void autorun_CheckedChanged(object sender, EventArgs e)
+        {
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "General", "Autorun", autorun.Checked.ToString());
+            AutoRunToggle(autorun.Checked);
+        }
+
+        private void launchTray_CheckedChanged(object sender, EventArgs e)
+        {
+            configManager.ChangeAndSaveParam(configManager.settingsPath, "General", "AutorunTray", launchTray.Checked.ToString());
+        }
+
+        public void AutoRunToggle(bool status)
+        {
+            string appName = "MyAppName"; // название, под которым будет записан ключ
+            string appPath = Application.ExecutablePath; // путь к исполняемому файлу
+
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+
+            if (status)
+            {
+                rk.SetValue(appName, "\"" + appPath + "\"");
+            }
+            else
+            {
+                if (rk.GetValue(appName) != null)
+                    rk.DeleteValue(appName);
             }
         }
     }

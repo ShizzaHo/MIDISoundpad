@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MidiControllerBox = new System.Windows.Forms.ComboBox();
             this.log = new System.Windows.Forms.RichTextBox();
@@ -60,6 +61,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.monitoringVolumeFactor = new System.Windows.Forms.NumericUpDown();
+            this.spMonitoringMode = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.spMonitoringOutput = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.wasapiLatency = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
@@ -67,19 +74,30 @@
             this.lalal = new System.Windows.Forms.Label();
             this.latency = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.autorun = new System.Windows.Forms.CheckBox();
+            this.trayMode = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.VirtualCableBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.launchTray = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.label14 = new System.Windows.Forms.Label();
             this.About.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -89,9 +107,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindMidiKey)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitoringVolumeFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wasapiLatency)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MidiControllerBox
@@ -111,7 +133,7 @@
             this.log.Name = "log";
             this.log.ReadOnly = true;
             this.log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.log.Size = new System.Drawing.Size(831, 104);
+            this.log.Size = new System.Drawing.Size(831, 127);
             this.log.TabIndex = 1;
             this.log.Text = "";
             // 
@@ -442,6 +464,12 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.Controls.Add(this.monitoringVolumeFactor);
+            this.tabPage4.Controls.Add(this.spMonitoringMode);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.spMonitoringOutput);
+            this.tabPage4.Controls.Add(this.label22);
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.wasapiLatency);
             this.tabPage4.Controls.Add(this.label13);
@@ -454,6 +482,70 @@
             this.tabPage4.TabIndex = 5;
             this.tabPage4.Text = "Equipment Settings";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.Location = new System.Drawing.Point(365, 88);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(126, 21);
+            this.label24.TabIndex = 18;
+            this.label24.Text = "Monitoring volume factor";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // monitoringVolumeFactor
+            // 
+            this.monitoringVolumeFactor.Location = new System.Drawing.Point(495, 90);
+            this.monitoringVolumeFactor.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.monitoringVolumeFactor.Name = "monitoringVolumeFactor";
+            this.monitoringVolumeFactor.Size = new System.Drawing.Size(59, 20);
+            this.monitoringVolumeFactor.TabIndex = 17;
+            this.monitoringVolumeFactor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // spMonitoringMode
+            // 
+            this.spMonitoringMode.AutoSize = true;
+            this.spMonitoringMode.Location = new System.Drawing.Point(562, 92);
+            this.spMonitoringMode.Name = "spMonitoringMode";
+            this.spMonitoringMode.Size = new System.Drawing.Size(53, 17);
+            this.spMonitoringMode.TabIndex = 15;
+            this.spMonitoringMode.Text = "Mode";
+            this.spMonitoringMode.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.ForeColor = System.Drawing.Color.Gray;
+            this.label23.Location = new System.Drawing.Point(18, 112);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(463, 29);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "It will play sounds on the selected device, but you will not hear your voice, thi" +
+    "s is for understanding what sound you have turned on.";
+            // 
+            // spMonitoringOutput
+            // 
+            this.spMonitoringOutput.FormattingEnabled = true;
+            this.spMonitoringOutput.Location = new System.Drawing.Point(141, 88);
+            this.spMonitoringOutput.Name = "spMonitoringOutput";
+            this.spMonitoringOutput.Size = new System.Drawing.Size(218, 21);
+            this.spMonitoringOutput.TabIndex = 15;
+            // 
+            // label22
+            // 
+            this.label22.Location = new System.Drawing.Point(17, 87);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(116, 20);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "SoundPad Monitoring";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
@@ -528,6 +620,14 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.pictureBox2);
+            this.tabPage3.Controls.Add(this.label21);
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -535,6 +635,103 @@
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "About";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox2.Image = global::MidiSoundpad.Properties.Resources.TONQR;
+            this.pictureBox2.Location = new System.Drawing.Point(705, 132);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(114, 118);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label21.AutoSize = true;
+            this.label21.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(683, 253);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(136, 13);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "Donation support (Toncoin)";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label20.AutoSize = true;
+            this.label20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label20.Location = new System.Drawing.Point(315, 253);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(166, 13);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "Donation support (DonationAlerts)";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label19.AutoSize = true;
+            this.label19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label19.Location = new System.Drawing.Point(152, 253);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(157, 13);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "VB-CABLE Virtual Audio Device";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label18.AutoSize = true;
+            this.label18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label18.Location = new System.Drawing.Point(27, 253);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(119, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Source code on GitHub";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(27, 109);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(625, 36);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "MIDISoundpad is a completely free and open source program that allows you to turn" +
+    " your MIDI keyboard into a full—fledged soundpad.";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(190, 63);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(83, 16);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "By ShizzaHo";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(23, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(257, 39);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "MIDISoundpad";
             // 
             // label1
             // 
@@ -554,27 +751,29 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Microphone";
             // 
-            // checkBox1
+            // autorun
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(706, 27);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(145, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Autorun at system startup";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.autorun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.autorun.AutoSize = true;
+            this.autorun.Location = new System.Drawing.Point(706, 27);
+            this.autorun.Name = "autorun";
+            this.autorun.Size = new System.Drawing.Size(145, 17);
+            this.autorun.TabIndex = 7;
+            this.autorun.Text = "Autorun at system startup";
+            this.autorun.UseVisualStyleBackColor = true;
+            this.autorun.CheckedChanged += new System.EventHandler(this.autorun_CheckedChanged);
             // 
-            // checkBox2
+            // trayMode
             // 
-            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(706, 48);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(109, 17);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Close it in the tray";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.trayMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trayMode.AutoSize = true;
+            this.trayMode.Location = new System.Drawing.Point(706, 48);
+            this.trayMode.Name = "trayMode";
+            this.trayMode.Size = new System.Drawing.Size(109, 17);
+            this.trayMode.TabIndex = 8;
+            this.trayMode.Text = "Close it in the tray";
+            this.trayMode.UseVisualStyleBackColor = true;
+            this.trayMode.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // label3
             // 
@@ -604,16 +803,17 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Virtual Audio Cable (VB-Audio recommended)\r\n";
             // 
-            // checkBox3
+            // launchTray
             // 
-            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(706, 7);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(134, 17);
-            this.checkBox3.TabIndex = 12;
-            this.checkBox3.Text = "Launching into the tray";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.launchTray.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.launchTray.AutoSize = true;
+            this.launchTray.Location = new System.Drawing.Point(706, 7);
+            this.launchTray.Name = "launchTray";
+            this.launchTray.Size = new System.Drawing.Size(134, 17);
+            this.launchTray.TabIndex = 12;
+            this.launchTray.Text = "Launching into the tray";
+            this.launchTray.UseVisualStyleBackColor = true;
+            this.launchTray.CheckedChanged += new System.EventHandler(this.launchTray_CheckedChanged);
             // 
             // panel2
             // 
@@ -628,6 +828,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(866, 23);
             this.panel2.TabIndex = 13;
+            this.panel2.Visible = false;
             // 
             // label11
             // 
@@ -638,6 +839,7 @@
             this.label11.TabIndex = 15;
             this.label11.Text = "There are no sounds playing now";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.Visible = false;
             // 
             // pictureBox1
             // 
@@ -649,6 +851,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // label10
             // 
@@ -659,10 +862,33 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Status of pressing the MIDI keys:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label10.Visible = false;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "MIDI Soundpad";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowImageMargin = false;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(69, 26);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(68, 22);
+            this.toolStripMenuItem2.Text = "Exit";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // label14
             // 
@@ -673,6 +899,7 @@
             this.label14.Size = new System.Drawing.Size(95, 13);
             this.label14.TabIndex = 14;
             this.label14.Text = "It\'s not working yet";
+            this.label14.Visible = false;
             // 
             // Form1
             // 
@@ -680,20 +907,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 528);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.launchTray);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.VirtualCableBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.trayMode);
+            this.Controls.Add(this.autorun);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.About);
             this.Controls.Add(this.log);
             this.Controls.Add(this.MidiControllerBox);
             this.Controls.Add(this.MicrophoneBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "MIDI Soundpad 0.1.0 (BETA) | by ShizzaHo";
+            this.Text = "MIDI Soundpad 1.0.0 | by ShizzaHo";
             this.About.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -706,10 +934,15 @@
             this.tabPage2.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitoringVolumeFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wasapiLatency)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,8 +956,8 @@
         private System.Windows.Forms.TabControl About;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox autorun;
+        private System.Windows.Forms.CheckBox trayMode;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -751,7 +984,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button bindDelete;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox launchTray;
         private System.Windows.Forms.Label midiKeyWaitText;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label10;
@@ -768,6 +1001,23 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown wasapiLatency;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.CheckBox spMonitoringMode;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox spMonitoringOutput;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown monitoringVolumeFactor;
+        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label14;
     }
 }

@@ -21,6 +21,10 @@ namespace MidiSoundpad
         private WasapiOut waveOut;
         private MMDevice selectedOutput;
 
+        private WasapiOut monitorOut;
+        private MMDevice monitorOutputDevice;
+        private MixingSampleProvider monitorMixer;
+
         private List<string> microphoneNames = new List<string>();
         private MMDeviceEnumerator deviceEnumerator = new MMDeviceEnumerator();
 
@@ -39,6 +43,7 @@ namespace MidiSoundpad
 
             SelectMicrophone(data["Audio"]["Input"]);
             SelectOutput(data["Audio"]["Output"]);
+            SelectMonitorOutput(data["Audio"]["SoundPadMonitoringOutput"]);
         }
 
         public void Dispose()
@@ -89,6 +94,23 @@ namespace MidiSoundpad
             LogManager.Instance.AddLog("AUDIOManager", $"Output device is selected: {selectedOutput.FriendlyName}");
         }
 
+        public void SelectMonitorOutput(string name)
+        {
+            var outputDevices = deviceEnumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
+            monitorOutputDevice = null;
+
+            foreach (var device in outputDevices)
+            {
+                if (device.FriendlyName.Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    monitorOutputDevice = device;
+                    break;
+                }
+            }
+
+            LogManager.Instance.AddLog("AUDIOManager", $"Monitor output selected: {monitorOutputDevice?.FriendlyName}");
+        }
+
         public void SelectMicrophone(string name)
         {
             var recordingDevices = deviceEnumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active);
@@ -118,7 +140,6 @@ namespace MidiSoundpad
                 DiscardOnBufferOverflow = true
             };
 
-
             var micSampleProvider = microphoneBuffer.ToSampleProvider();
 
             mixer = new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(
@@ -129,19 +150,35 @@ namespace MidiSoundpad
 
             mixer.AddMixerInput(micSampleProvider);
 
-            waveOut = new WasapiOut(selectedOutput, AudioClientShareMode.Shared, true, Int32.Parse(_configManager.GetParamValue(_configManager.settingsPath, "Audio", "WasapiLatency")));
+            waveOut = new WasapiOut(selectedOutput, AudioClientShareMode.Shared, true,
+                Int32.Parse(_configManager.GetParamValue(_configManager.settingsPath, "Audio", "WasapiLatency")));
             waveOut.Init(mixer);
-
-            waveIn.StartRecording();
             waveOut.Play();
 
-            LogManager.Instance.AddLog("AUDIOManager", $"Real-time recording started");
+            // Тот же формат, но без микрофона
+            monitorMixer = new MixingSampleProvider(mixer.WaveFormat) { ReadFully = true };
+
+            if (monitorOutputDevice != null && Boolean.Parse(_configManager.GetParamValue(_configManager.settingsPath, "Audio", "SoundPadMonitoringMode")))
+            {
+                monitorOut = new WasapiOut(monitorOutputDevice, AudioClientShareMode.Shared, true, Int32.Parse(_configManager.GetParamValue(_configManager.settingsPath, "Audio", "WasapiLatency")));
+                monitorOut.Init(monitorMixer);
+                monitorOut.Play();
+
+                LogManager.Instance.AddLog("AUDIOManager", $"MonitorOut started: {monitorOutputDevice.FriendlyName}");
+            }
+
+            waveIn.StartRecording();
+            LogManager.Instance.AddLog("AUDIOManager", "Recording started with monitor mode");
         }
+
+
 
         public void Stop()
         {
             waveIn?.StopRecording();
             waveOut?.Stop();
+            monitorOut?.Stop();
+
             LogManager.Instance.AddLog("AUDIOManager", $"Capture and playback are stopped.");
         }
 
@@ -155,8 +192,13 @@ namespace MidiSoundpad
             LogManager.Instance.AddLog("AUDIOManager", $"Audio capture has been stopped.");
         }
 
-        public void PlayAudioInOutput(string filePath, int volume, bool multiple)
+        public void PlayAudioInOutput(string filePath, int volume, int monitoringVolume, bool multiple)
         {
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
             if (!multiple)
             {
                 lock (mixerLock)
@@ -164,58 +206,60 @@ namespace MidiSoundpad
                     foreach (var source in activeSources)
                     {
                         mixer.RemoveMixerInput(source);
+                        monitorMixer?.RemoveMixerInput(source);
 
                         if (source is IDisposable disposable)
-                        {
                             disposable.Dispose();
-                        }
                     }
                     activeSources.Clear();
-                }
 
-                backgroundMusic?.Dispose();
-                backgroundMusic = null;
+                    backgroundMusic?.Dispose();
+                    backgroundMusic = null;
+                }
             }
 
+            // ОСНОВНОЙ ВЫХОД
             backgroundMusic = new AudioFileReader(filePath);
-            var musicProvider = backgroundMusic.ToSampleProvider();
-
-            var volumeProvider = new VolumeSampleProvider(musicProvider)
+            var musicProviderMain = new VolumeSampleProvider(backgroundMusic.ToSampleProvider())
             {
                 Volume = volume / 100f
             };
+            var finalMain = EnsureWaveFormatMatch(musicProviderMain, mixer.WaveFormat);
 
-            ISampleProvider convertedProvider = volumeProvider;
-
-            if (musicProvider.WaveFormat.SampleRate != mixer.WaveFormat.SampleRate)
+            // МОНИТОРИНГ — новая копия файла
+            var monitorReader = new AudioFileReader(filePath);
+            var musicProviderMonitor = new VolumeSampleProvider(monitorReader.ToSampleProvider())
             {
-                convertedProvider = new WdlResamplingSampleProvider(convertedProvider, mixer.WaveFormat.SampleRate);
-            }
-
-            if (musicProvider.WaveFormat.Channels != mixer.WaveFormat.Channels)
-            {
-                if (mixer.WaveFormat.Channels == 1 && convertedProvider.WaveFormat.Channels == 2)
-                {
-                    convertedProvider = new StereoToMonoSampleProvider(convertedProvider);
-                }
-                else if (mixer.WaveFormat.Channels == 2 && convertedProvider.WaveFormat.Channels == 1)
-                {
-                    convertedProvider = new MonoToStereoSampleProvider(convertedProvider);
-                }
-            }
+                Volume = (volume / 100f) * (monitoringVolume / 100f)
+            };
+            var finalMonitor = EnsureWaveFormatMatch(musicProviderMonitor, monitorMixer.WaveFormat);
 
             lock (mixerLock)
             {
-                mixer.AddMixerInput(convertedProvider);
-                activeSources.Add(convertedProvider);
-            }
+                mixer.AddMixerInput(finalMain);
+                monitorMixer?.AddMixerInput(finalMonitor);
 
-            if (waveOut == null)
-            {
-                waveOut = new WasapiOut(selectedOutput, AudioClientShareMode.Shared, true, 100);
-                waveOut.Init(mixer);
-                waveOut.Play();
+                activeSources.Add(finalMain);
+                activeSources.Add(finalMonitor);
             }
         }
+
+        private ISampleProvider EnsureWaveFormatMatch(ISampleProvider provider, WaveFormat targetFormat)
+        {
+            if (provider.WaveFormat.SampleRate != targetFormat.SampleRate)
+                provider = new WdlResamplingSampleProvider(provider, targetFormat.SampleRate);
+
+            if (provider.WaveFormat.Channels != targetFormat.Channels)
+            {
+                if (targetFormat.Channels == 1 && provider.WaveFormat.Channels == 2)
+                    provider = new StereoToMonoSampleProvider(provider);
+                else if (targetFormat.Channels == 2 && provider.WaveFormat.Channels == 1)
+                    provider = new MonoToStereoSampleProvider(provider);
+            }
+
+            return provider;
+        }
+
+
     }
 }

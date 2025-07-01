@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -114,8 +115,12 @@ namespace MidiSoundpad
                         {
                             if (_configManager.GetParamValue(_configManager.bindsPath, bindName, "midiKey") == note.ToString())
                             {
-                                _audioManager.PlayAudioInOutput(_configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_audiofile"), Int32.Parse(_configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_volume")), Convert.ToBoolean(_configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_multiple")));
-                            }
+                                _audioManager.PlayAudioInOutput(
+                                    _configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_audiofile"), 
+                                    Int32.Parse(_configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_volume")), 
+                                    Int32.Parse(_configManager.GetParamValue(_configManager.settingsPath, "Audio", "SoundPadMonitoringVolumeFactor")),
+                                    Convert.ToBoolean(_configManager.GetParamValue(_configManager.bindsPath, bindName, "sound_multiple"))
+                                    );}
                         }
                     }
                     else

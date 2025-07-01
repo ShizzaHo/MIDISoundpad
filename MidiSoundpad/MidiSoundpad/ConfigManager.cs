@@ -65,6 +65,9 @@ namespace MidiSoundpad
                 iniData["Audio"]["Input"] = deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Console).FriendlyName;
                 iniData["Audio"]["Output"] = deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console).FriendlyName;
                 iniData["Audio"]["WasapiLatency"] = "30";
+                iniData["Audio"]["SoundPadMonitoringMode"] = "false";
+                iniData["Audio"]["SoundPadMonitoringOutput"] = deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console).FriendlyName; ;
+                iniData["Audio"]["SoundPadMonitoringVolumeFactor"] = "50";
 
                 parser.WriteFile(settingsPath, iniData);
 

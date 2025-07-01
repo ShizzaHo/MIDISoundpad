@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|c:\\users\\shizzaho\\source\\repos\\midisoundpad\\midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|c:\\users\\shizzaho\\source\\repos\\midisoundpad\\midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|c:\\users\\shizzaho\\source\\repos\\midisoundpad\\midisoundpad\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|c:\\users\\shizzaho\\source\\repos\\midisoundpad\\midisoundpad\\midimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\midimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\midisoundpad\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\midisoundpad\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|c:\\users\\shizzaho\\source\\repos\\midisoundpad\\midisoundpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48C6771F-B55A-4E69-903E-224262D9DFE1}|MidiSoundpad\\MidiSoundpad.csproj|solutionrelative:midisoundpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,31 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs",
-              "RelativeDocumentMoniker": "MidiSoundpad\\Form1.cs",
-              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
-              "RelativeToolTip": "MidiSoundpad\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Program.cs",
+              "RelativeDocumentMoniker": "MidiSoundpad\\Program.cs",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Program.cs",
+              "RelativeToolTip": "MidiSoundpad\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T10:51:48.692Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AudioManager.cs",
-              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\AudioManager.cs",
-              "RelativeDocumentMoniker": "MidiSoundpad\\AudioManager.cs",
-              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\AudioManager.cs",
-              "RelativeToolTip": "MidiSoundpad\\AudioManager.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAQwHgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T10:43:06.451Z",
+              "WhenOpened": "2025-07-01T09:04:02.366Z",
               "EditorCaption": ""
             },
             {
@@ -55,11 +55,62 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs",
               "RelativeDocumentMoniker": "MidiSoundpad\\Form1.cs",
-              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs*",
-              "RelativeToolTip": "MidiSoundpad\\Form1.cs*",
-              "ViewState": "AQIAAGQBAAAAAAAAAAAhwHMBAAAAAAAA",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs",
+              "RelativeToolTip": "MidiSoundpad\\Form1.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAiwDEAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-30T10:23:08.128Z",
+              "WhenOpened": "2025-06-30T14:02:57.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MidiManager.cs",
+              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\MidiManager.cs",
+              "RelativeDocumentMoniker": "MidiSoundpad\\MidiManager.cs",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\MidiManager.cs",
+              "RelativeToolTip": "MidiSoundpad\\MidiManager.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAWwG0AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:22:25.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConfigManager.cs",
+              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\ConfigManager.cs",
+              "RelativeDocumentMoniker": "MidiSoundpad\\ConfigManager.cs",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\ConfigManager.cs",
+              "RelativeToolTip": "MidiSoundpad\\ConfigManager.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAqwGUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T12:55:33.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs",
+              "RelativeDocumentMoniker": "MidiSoundpad\\Form1.cs",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "MidiSoundpad\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T10:51:48.692Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AudioManager.cs",
+              "DocumentMoniker": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\AudioManager.cs",
+              "RelativeDocumentMoniker": "MidiSoundpad\\AudioManager.cs",
+              "ToolTip": "C:\\Users\\ShizzaHo\\source\\repos\\MidiSoundpad\\MidiSoundpad\\AudioManager.cs",
+              "RelativeToolTip": "MidiSoundpad\\AudioManager.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAAAKEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T10:43:06.451Z",
               "EditorCaption": ""
             }
           ]
