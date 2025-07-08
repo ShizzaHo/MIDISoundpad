@@ -6,6 +6,10 @@ A simple and convenient tool for playing sounds using a MIDI keyboard.
 
 Your MIDI keyboard is capable not only of making sounds in musical programs, but also of creating funny situations with your friends and not only :D
 
+## Launch dependencies
+
+[.NET Framework 4.7.2 and higher](https://dotnet.microsoft.com/download)
+
 ## Getting started
 
 The installation is very simple, download the current release and unpack it to a convenient location.
